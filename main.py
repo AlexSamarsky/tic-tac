@@ -75,23 +75,24 @@ def make_turn(arr, coords, whos_turn):
         
 
 def will_begin_new_game():
-    if winner == -1:
-        new_game = input(f'Игра закончилась вничью, начать новую? Y для продолжения: ')
-    else:
-        new_game = input(f'Поздравляем, есть победитель {winner}. Игра закончена, начать новую? Y для продолжения: ')
-    match = re.search('\w', new_game)
-    if match:
-        if new_game.upper() == 'Y':
-            return True
-        elif new_game.upper() == 'N':
-            print('Игра завершена! Спасибо за участие')
-            return False
+    while True:
+        if winner == -1:
+            new_game = input(f'Игра закончилась вничью, начать новую? [Y, N]: ')
         else:
-            print('Введен непонятный символ, игра будет завершена! Спасибо за участие')
-            return False
-    else:
-        print('Введен непонятный символ, игра будет завершена! Спасибо за участие')
-        return True
+            new_game = input(f'Поздравляем, есть победитель {winner}. Игра закончена, начать новую? Y для продолжения: ')
+        match = re.search('\w', new_game)
+        if match:
+            if new_game.upper() == 'Y':
+                return True
+            elif new_game.upper() == 'N':
+                print('Игра завершена! Спасибо за участие')
+                return False
+            else:
+                print('Введен непонятный символ!')
+                # return False
+        else:
+            print('Введен непонятный символ!')
+            # return True
 
 
 if __name__ == '__main__':
