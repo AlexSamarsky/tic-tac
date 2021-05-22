@@ -12,7 +12,7 @@ win_states = [
 ]
 
 def get_start():
-    arr = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    arr = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
     print('\n\nНовая игра, давайте начнем!')
     print_board(arr)
     return arr, 'X'
@@ -27,13 +27,17 @@ def check_win(arr):
 def check_winner(arr):
     x_arr = []
     o_arr = []
-    
+    turn = 0
     for i in range(0, 9):
         if arr[i].upper() == 'X':
             x_arr.append(i)
-        elif arr[i].upper() == 'X':
+            turn += 1
+        elif arr[i].upper() == 'O':
             o_arr.append(i)
-    if check_win(x_arr):
+            turn += 1
+    if turn == 9:
+        return -1
+    elif check_win(x_arr):
         return 'X'
     elif check_win(o_arr):
         return 'O'
@@ -71,7 +75,10 @@ def make_turn(arr, coords, whos_turn):
         
 
 def will_begin_new_game():
-    new_game = input(f'Поздравляем, есть победитель {winner}. Игра закончена, начать новую? Y для продолжения: ')
+    if winner == -1:
+        new_game = input(f'Игра закончилась вничью, начать новую? Y для продолжения: ')
+    else:
+        new_game = input(f'Поздравляем, есть победитель {winner}. Игра закончена, начать новую? Y для продолжения: ')
     match = re.search('\w', new_game)
     if match:
         if new_game.upper() == 'Y':
