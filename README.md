@@ -2,6 +2,33 @@
 tic-tac console game
 
 игра проходит в консоли, выводится доска в формате:<br>
+<table>
+  <tr>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td> </td>
+    <td>X</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+</table>
+
   0 1 2<br>
 0 X X _<br>
 1 O _ _<br>
